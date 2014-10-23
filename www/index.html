@@ -1,0 +1,113 @@
+<html ng-app="newsGetterIndex">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="format-detection" content="telephone=no" />
+        <meta name="msapplication-tap-highlight" content="no" />
+        <title>Phonegap News Example</title>
+
+        <!-- WARNING: for iOS 7, remove the width=device-width and height=device-height attributes. See https://issues.apache.org/jira/browse/CB-4323 -->
+        <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height, target-densitydpi=meduim-dpi" />
+        <link rel="stylesheet" type="text/css" href="css/index.css" />
+
+        <!-- Add Libraries -->
+        <link rel="stylesheet" href="libs/jquery-mobile/jquery.mobile-1.4.4.min.css">
+        <script src="libs/jquery/jquery-1.11.1.min.js"></script>
+        <script src="libs/angular-1.2.26/angular.min.js"></script>
+        <script src="libs/jquery-mobile/jquery.mobile-1.4.4.min.js"></script>
+
+        <!-- Controllers Load -->
+        <script src="js/ng-controllers/indexControllers.js"></script>
+        <script src="js/ng-controllers/indexServices.js"></script>
+        <script src="js/ng-controllers/indexUtilities.js"></script>
+        <script src="js/index.js"></script>
+    </head>
+    <body>
+
+      <!-- Categories Page -->
+      <div data-role="page" id="categoriesPage" ng-controller="categoriesController" data-theme="b">
+        <div data-role="header" data-position="fixed">
+          <h1>{{pageTitle}}</h1>
+          <a href="#" class="ui-btn ui-corner-all ui-shadow" ng-click="refresh()">Refresh</a>
+        </div>
+        <div data-role="main" class="ui-content">
+          <ul data-role="listview" id="categoriesListView">
+            <li ng-repeat="category in categories" ng-click="setSelected($index)">
+                <a href="#newsPage">
+                  <h2>{{category.title}}</h2>
+                  <p>{{category.description}}</p>
+                </a>
+            </li>
+          </ul>
+        </div>
+        <div data-role="footer" data-position="fixed" style="text-align:center;">
+          <div data-role="controlgroup" data-type="horizontal">
+            <a href="#aboutPage" class="ui-btn ui-corner-all ui-shadow ui-icon-info ui-btn-icon-notext">About</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- News Page -->
+      <div data-role="page" id="newsPage" ng-controller="newsController" data-theme="b">
+        <div data-role="header" data-position="fixed">
+          <a href="#" class="ui-btn ui-corner-all ui-shadow" data-rel="back">Back</a>
+          <h1>{{pageTitle}}</h1>
+          <a href="#" class="ui-btn ui-corner-all ui-shadow" ng-click="refresh()">Refresh</a>
+        </div>
+        <div data-role="main" class="ui-content">
+          <ul data-role="listview" id="newsListView">
+            <li ng-repeat="new in news" ng-click="setSelected($index)">
+                <a href="#detailsPage">
+                  <h2>{{new.title}}</h2>
+                  <p>{{new.description}}</p>
+                </a>
+            </li>
+          </ul>
+        </div>
+        <div data-role="footer" data-position="fixed" style="text-align:center;">
+          <div data-role="controlgroup" data-type="horizontal">
+            <a href="#aboutPage" class="ui-btn ui-corner-all ui-shadow ui-icon-info ui-btn-icon-notext">About</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Details Page -->
+      <div data-role="page" id="detailsPage" ng-controller="detailsController" data-theme="b">
+        <div data-role="header" data-position="fixed">
+          <a href="#" class="ui-btn ui-corner-all ui-shadow" data-rel="back">Back</a>
+          <h1>{{newsTitle}}</h1>
+        </div>
+        <div data-role="main" class="ui-content">
+          <h3>{{newsTitle}}</h3>
+          <p>{{newsDetails}}</p>
+        </div>
+        <div data-role="footer" data-position="fixed" style="text-align:center;">
+          <div data-role="controlgroup" data-type="horizontal">
+            <a href="#aboutPage" class="ui-btn ui-corner-all ui-shadow ui-icon-info ui-btn-icon-notext">About</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- About Dialog -->
+      <div data-role="page" id="aboutPage" data-theme="b">
+        <div data-role="header" data-position="fixed">
+          <a href="#" class="ui-btn ui-corner-all ui-shadow" data-rel="back">Back</a>
+          <h1>About</h1>
+        </div>
+        <div data-role="main" class="ui-content">
+          <h3>Phonegap News Example Application</h3>
+          <p>build using:</p>
+          <ul>
+            <li>HTML</li>
+            <li>Javascript</li>
+            <li>jQuery</li>
+            <li>jQuery Mobile</li>
+            <li>Angular Js</li>
+          </ul>
+          <P>Author: <a href="#">Ahmed Al-Shahawi</a></p>
+          <a href="http://github.com/alshahawi">Github</a>
+        </div>
+      </div>
+
+      <script type="text/javascript" src="cordova.js"></script>
+    </body>
+</html>

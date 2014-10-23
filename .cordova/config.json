@@ -1,0 +1,9 @@
+{
+    "lib": {
+        "www": {
+            "id": "com.alshahawi.phonegap-newsexample",
+            "version": "3.5.0",
+            "uri": "https://github.com/AlShahawi/phonegap-example/"
+        }
+    }
+}
