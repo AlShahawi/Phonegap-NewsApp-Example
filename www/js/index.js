@@ -1,21 +1,18 @@
+// ngApp object contains the main functions to initialize the application
 var ngApp = {
   module: null,
-  runningInPhonegap: null,
   initialize: function()
   {
+	// initialize our angular module
     this.module = angular.module("newsGetterIndex", []);
+	// load our controllers
     this.module.controller("categoriesController", ngAppControllers.categoriesController);
     this.module.controller("newsController", ngAppControllers.newsController);
     this.module.controller("detailsController", ngAppControllers.detailsController);
+	// inject our service to be used via our controllers
     this.module.service("newsService", ngAppServices.newsService);
   }
 };
 
-var app = document.URL.indexOf('http://') === -1 && document.URL.indexOf('https://') === -1;
-if (app) {
-  ngApp.runningInPhonegap = true;
-  document.addEventListener('deviceready', ngApp.initialize, false);
-} else {
-  ngApp.runningInPhonegap = false;
-  ngApp.initialize();
-}
+// initialize the application
+ngApp.initialize();

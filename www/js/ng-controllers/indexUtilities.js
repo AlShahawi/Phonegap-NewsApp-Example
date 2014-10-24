@@ -1,3 +1,4 @@
+// ngAppUtilities contains ui utilities functions 
 var ngAppUtilities = {
   showLoading: function(){
     var interval = setInterval(function() {

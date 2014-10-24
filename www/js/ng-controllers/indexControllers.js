@@ -1,4 +1,6 @@
+//ngAppControllers contains our controllers functions
 var ngAppControllers = {
+  // Categories page controller handler
   categoriesController: function($scope, newsService)
   {
     $scope.pageTitle = "Select Category";
@@ -26,6 +28,7 @@ var ngAppControllers = {
       newsService.categories.updateAsync(receiveData, showError);
     };
   },
+  // News page controller handler
   newsController: function($scope, newsService)
   {
     var receiveData = function(data) {
@@ -54,6 +57,7 @@ var ngAppControllers = {
       newsService.news.updateAsync(receiveData, showError);
     };
   },
+  // Details page controller handler
   detailsController: function($scope, newsService)
   {
     newsService.on("selectNews", function(news) {

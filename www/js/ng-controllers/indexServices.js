@@ -1,3 +1,4 @@
+// ngAppServices contains our news service to be used via news controllers
 var ngAppServices = {
   newsService: function($http)
   {
@@ -7,13 +8,13 @@ var ngAppServices = {
     var selectedCategory = 0;
     var selectedNews = 0;
 
-    /// Categories Services
+    // Categories services
     var categories = {
       cached: function() {
         return localStorage.lastUpdateDate ? true : false;
       },
       updateAsync: function(onSuccess, onError) {
-        $http.get("https://dl.dropboxusercontent.com/u/28300614/static-web-services/news-categories.json")
+        $http.get(config.categoriesServiceUrl)
         .success(function(response) {
           categoriesData = response;
           localStorage.lastUpdateDate = (new Date()).toString();
@@ -40,7 +41,7 @@ var ngAppServices = {
       getSelected: function() { return selectedCategory; }
     };
 
-    /// News Services
+    // News services
     var news = {
       cached: function() {
         return localStorage.getItem(categoriesData[selectedCategory].url) ? true : false;

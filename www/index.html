@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <html ng-app="newsGetterIndex">
     <head>
         <meta charset="utf-8" />
@@ -9,13 +10,13 @@
         <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height, target-densitydpi=meduim-dpi" />
         <link rel="stylesheet" type="text/css" href="css/index.css" />
 
-        <!-- Add Libraries -->
+        <!-- frameworks and libraries -->
         <link rel="stylesheet" href="libs/jquery-mobile-1.4.4/jquery.mobile-1.4.4.min.css">
         <script src="libs/jquery-1.11.1/jquery-1.11.1.min.js"></script>
         <script src="libs/angular-1.2.26/angular.min.js"></script>
         <script src="libs/jquery-mobile-1.4.4/jquery.mobile-1.4.4.min.js"></script>
 
-        <!-- Controllers Load -->
+        <!-- Controllers, services and utilities -->
         <script src="js/ng-controllers/indexControllers.js"></script>
         <script src="js/ng-controllers/indexServices.js"></script>
         <script src="js/ng-controllers/indexUtilities.js"></script>
@@ -23,14 +24,18 @@
     </head>
     <body>
 
-      <!-- Categories Page -->
+      <!-- Categories page -->
+	  <!-- This is the main page contains a list of categories -->
       <div data-role="page" id="categoriesPage" ng-controller="categoriesController" data-theme="b">
-        <div data-role="header" data-position="fixed">
+        <!-- Categories page header -->
+		<div data-role="header" data-position="fixed">
           <h1>{{pageTitle}}</h1>
           <a href="#" class="ui-btn ui-corner-all ui-shadow" ng-click="refresh()">Refresh</a>
         </div>
+		<!-- Categories page content -->
         <div data-role="main" class="ui-content">
           <ul data-role="listview" id="categoriesListView">
+			<!-- Loop into categories (category in categories) -->
             <li ng-repeat="category in categories" ng-click="setSelected($index)">
                 <a href="#newsPage">
                   <h2>{{category.title}}</h2>
@@ -39,6 +44,7 @@
             </li>
           </ul>
         </div>
+		<!-- Categories page footer -->
         <div data-role="footer" data-position="fixed" style="text-align:center;">
           <div data-role="controlgroup" data-type="horizontal">
             <a href="#aboutPage" class="ui-btn ui-corner-all ui-shadow ui-icon-info ui-btn-icon-notext">About</a>
@@ -46,15 +52,19 @@
         </div>
       </div>
 
-      <!-- News Page -->
+      <!-- News page -->
+	  <!-- this will contain a list news of selected category -->
       <div data-role="page" id="newsPage" ng-controller="newsController" data-theme="b">
-        <div data-role="header" data-position="fixed">
+        <!-- News page header-->
+		<div data-role="header" data-position="fixed">
           <a href="#" class="ui-btn ui-corner-all ui-shadow" data-rel="back">Back</a>
           <h1>{{pageTitle}}</h1>
           <a href="#" class="ui-btn ui-corner-all ui-shadow" ng-click="refresh()">Refresh</a>
         </div>
+		<!-- Selected category news content -->
         <div data-role="main" class="ui-content">
           <ul data-role="listview" id="newsListView">
+			<!-- Loop into selected category news -->
             <li ng-repeat="new in news" ng-click="setSelected($index)">
                 <a href="#detailsPage">
                   <h2>{{new.title}}</h2>
@@ -63,6 +73,7 @@
             </li>
           </ul>
         </div>
+		<!-- News page footer -->
         <div data-role="footer" data-position="fixed" style="text-align:center;">
           <div data-role="controlgroup" data-type="horizontal">
             <a href="#aboutPage" class="ui-btn ui-corner-all ui-shadow ui-icon-info ui-btn-icon-notext">About</a>
@@ -70,16 +81,20 @@
         </div>
       </div>
 
-      <!-- Details Page -->
+      <!-- Details page -->
+	  <!-- this will contain a details of selected news -->
       <div data-role="page" id="detailsPage" ng-controller="detailsController" data-theme="b">
+		<!-- Details page header -->
         <div data-role="header" data-position="fixed">
           <a href="#" class="ui-btn ui-corner-all ui-shadow" data-rel="back">Back</a>
           <h1>{{newsTitle}}</h1>
         </div>
+		<!-- Details page content -->
         <div data-role="main" class="ui-content">
           <h3>{{newsTitle}}</h3>
           <p>{{newsDetails}}</p>
         </div>
+		<!-- Details page footer -->
         <div data-role="footer" data-position="fixed" style="text-align:center;">
           <div data-role="controlgroup" data-type="horizontal">
             <a href="#aboutPage" class="ui-btn ui-corner-all ui-shadow ui-icon-info ui-btn-icon-notext">About</a>
@@ -87,7 +102,7 @@
         </div>
       </div>
 
-      <!-- About Page -->
+      <!-- About page -->
       <div data-role="page" id="aboutPage" data-theme="b">
         <div data-role="header" data-position="fixed">
           <a href="#" class="ui-btn ui-corner-all ui-shadow" data-rel="back">Back</a>
@@ -107,7 +122,16 @@
           <a href="http://github.com/alshahawi">Github</a>
         </div>
       </div>
-
+	
+	  <!-- Cordova reference -->
       <script type="text/javascript" src="cordova.js"></script>
+	  
+	  <!-- Application config -->
+	  <script>
+		var config = {
+			// here you can put your own service here which return json result and format must be the same format as this service.
+			categoriesServiceUrl: "https://dl.dropboxusercontent.com/u/28300614/static-web-services/news-categories.json"
+		};
+	  </script>
     </body>
 </html>
