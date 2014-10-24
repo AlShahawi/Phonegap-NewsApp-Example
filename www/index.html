@@ -37,7 +37,7 @@
           <ul data-role="listview" id="categoriesListView">
 			<!-- Loop into categories (category in categories) -->
             <li ng-repeat="category in categories" ng-click="setSelected($index)">
-                <a href="#newsPage">
+                <a href="#newsPage" data-transition="none">
                   <h2>{{category.title}}</h2>
                   <p>{{category.description}}</p>
                 </a>
@@ -66,7 +66,7 @@
           <ul data-role="listview" id="newsListView">
 			<!-- Loop into selected category news -->
             <li ng-repeat="new in news" ng-click="setSelected($index)">
-                <a href="#detailsPage">
+                <a href="#detailsPage" data-transition="none">
                   <h2>{{new.title}}</h2>
                   <p>{{new.description}}</p>
                 </a>
