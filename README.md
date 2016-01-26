@@ -9,4 +9,4 @@ Implemented using:
 - AngularJS 1.2
 
 Hope you like it.
-
+Creator: alshahawi@outlook.com
